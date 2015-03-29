@@ -1,7 +1,7 @@
 Subhd.com Subtitle Downloader
 =============================
 
-This tool downlaods subtitles from subhd.com automatically, and in addition it performs:
+The tool downloads subtitles from subhd.com automatically, and in addition it performs:
 
   - decompress the archieve and guess the most possible one.
   - convert encoding to UTF-8 with BOM.
