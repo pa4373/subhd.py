@@ -1,4 +1,6 @@
 #/usr/bin/env python
-
+import core
 if __name__ == '__main__':
-    pass
+    downloader = core.SubHDDownloader()
+    t = downloader.search('Person of Interest', False)
+    print t
