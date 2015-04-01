@@ -3,11 +3,12 @@
 This module defines SubHDDownloader class, the core communication part with
 subhd.com
 '''
+import re
 import requests
+from StringIO import StringIO
 from urllib import quote
 from guessit import guess_file_info
 from bs4 import BeautifulSoup
-import re
 
 class SubHDDownloader(object):
     '''The class seeks and downloads subtitles from subhd.com
@@ -36,7 +37,7 @@ class SubHDDownloader(object):
         '''
         if is_filename:
             file_info = guess_file_info(keyword)
-            keyword = file_info.get('series') # Movie?
+            keyword = file_info.get('title') # Movie?
 
         escaped_keyword = quote(keyword)
         page = requests.get(self.search_url + escaped_keyword)
@@ -85,14 +86,16 @@ class SubHDDownloader(object):
         except ValueError:
             print 'No subtitle download'
 
-        sub_data = requests.get(real_addr).content
-        if len(sub_data) < 1024:
+        sub_datastring = requests.get(real_addr).content
+        if len(sub_datastring) < 1024:
             datatype = None
-        if sub_data[:4] == 'Rar!':
+        if sub_datastring[:4] == 'Rar!':
             datatype = 'rar'
-        elif sub_data[:2] == 'PK':
+        elif sub_datastring[:2] == 'PK':
             datatype = 'zip'
         else:
             datatype = 'srt'
 
-        return (datatype, sub_data)
+        sub_buff = StringIO()
+        sub_buff.write(sub_datastring)
+        return (datatype, sub_buff)
