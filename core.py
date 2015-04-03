@@ -19,6 +19,7 @@ class SubHDDownloader(object):
         self.dl_lookup_url = 'http://subhd.com/ajax/down_ajax'
         self.search_url = 'http://subhd.com/search/'
         self.subid_re = re.compile(r'^/a/(\d+)$')
+        self.org_re = re.compile(r'^/zu/(\d+)$')
         self.info_re = re.compile(ur'\u683c\u5f0f\uff1a(\S+)\s' +
                                   ur'\u7248\u672c\uff1a(\S+)',
                                   re.UNICODE)
@@ -37,7 +38,7 @@ class SubHDDownloader(object):
         '''
         if is_filename:
             file_info = guess_file_info(keyword)
-            keyword = file_info.get('title') # Movie?
+            keyword = file_info.get('title') or file_info.get('series') # Make it cleaner (SxEx)
 
         escaped_keyword = quote(keyword)
         page = requests.get(self.search_url + escaped_keyword)
@@ -54,12 +55,15 @@ class SubHDDownloader(object):
                     if match:
                         item['id'] = match.group(1)
                         item['title'] = j.getText()
-                        break
+                    match = self.org_re.match(j.get('href'))
+                    if match:
+                        item['org'] = j.getText()
 
                 item_text = i.getText()
                 match = self.info_re.search(item_text)
                 if match:
                     item['format'], item['version'] = match.groups()
+
                 if item != {}:
                     items.append(item)
         return items
