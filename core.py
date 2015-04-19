@@ -7,7 +7,6 @@ import re
 import requests
 from StringIO import StringIO
 from urllib import quote
-from guessit import guess_file_info
 from bs4 import BeautifulSoup
 
 class SubHDDownloader(object):
@@ -24,22 +23,16 @@ class SubHDDownloader(object):
                                   ur'\u7248\u672c\uff1a(\S+)',
                                   re.UNICODE)
 
-    def search(self, keyword, is_filename=True):
+    def search(self, keyword):
         '''Search subtitles candidates.
 
         Args:
             keyword: the keyword to search, can be given as the filename
-            is_filename: the keyword will be preprocessed as filename before
-                         search.
         Returns:
             items: a list of dictionaries containing: subtitle id, title,
                    subtitle format and corrsponding video version.
 
         '''
-        if is_filename:
-            file_info = guess_file_info(keyword)
-            keyword = file_info.get('title') or file_info.get('series') # Make it cleaner (SxEx)
-
         escaped_keyword = quote(keyword)
         page = requests.get(self.search_url + escaped_keyword)
         soup = BeautifulSoup(page.content)
