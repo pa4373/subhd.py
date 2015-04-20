@@ -20,6 +20,8 @@ for a particular purpose.
 '''
 python 3 support 
 windows support
+pep-8 / pylint check
+setup.py & pip
 '''
 
 compressor_handler = {
@@ -64,7 +66,7 @@ def get_subtitle(keyword, is_filename=True, auto_download=False, chiconv_type='z
     if file_handler:
         compressor = file_handler(sub_data)
         subtitle_name, subtitle_body = compressor.extract_bestguess()
-        subtitle_name = './' + subtitle_name
+        subtitle_name = './' + subtitle_name.split('/')[-1]
         subtitle_extension = subtitle_name.split('.')[-1]
 
     # Chinese conversion
