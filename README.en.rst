@@ -1,31 +1,31 @@
-Subhd.py: subhd.com 字幕下載器
-============================
+Subhd.py: Subhd.com Subtitle Downloader
+=======================================
 
-這個工具除了能幫你自動從Subhd.com下載字幕以外，它還能夠：
+The tool downloads subtitles from subhd.com automatically, and in addition it performs:
 
-  - 自動解壓縮並找出最可能的檔案
-  - 將編碼轉換成UTF-8 without DOM
-  - 自動轉換為Unix style的行尾字元
-  - 自動繁體 / 簡體轉換
+  - decompress the archieve and guess the most possible one.
+  - convert encoding to UTF-8 with BOM.
+  - Unix line endings conversion.
+  - convert to Traditional / Simplified Chinese (optional)
 
-預計往後會加入對Python 3的支持以及Windows操作系統的完整測試。
+Python 3 support and Windows Testing is on schedule.
 
-安裝
-----
+Installation
+------------
 
-直接使用`pip`套件管理程式安裝:
+Simply using pip:
 
 :code:`$ pip install subhd.py`
 
 
-抑或手動使用setup.py安裝:
+or manual installation:
 
 :code:`$ python setup.py install`
 
-為了要能解壓縮rar格式的檔案，`unrar`命令列程序必須被安裝。
+to decompress rar file, `unrar` is required.
 
-使用方法
--------
+Usage
+-----
 
 .. code-block:: shell
 
@@ -54,7 +54,7 @@ Subhd.py: subhd.com 字幕下載器
     There is no warranty, not even for merchantability or fitness
     for a particular purpose.
 
-舉例來說，你能夠直接使用檔名搜索字幕：
+For example, you can search a subtitle using filename:
 
 .. code-block:: shell
 
@@ -81,30 +81,30 @@ Subhd.py: subhd.com 字幕下載器
    20) 银翼杀手 | Blade Runner (None)
    Select one subtitle to download: 2
 
-此時，你的字幕以備自動轉換為UTF-8編碼，並且翻譯成繁體中文。若字幕為srt格式，也會重新整理字幕索引，這樣對於類似Plex的服務器應用非常方便。
+Then your subtitle is utf-8 encoded, translate to Tradtional Chinese and with proper srt index order.
 
-若要讓程式自動選擇字幕下載，打開`-a`的旗標：
+To let the program automatically select subtitle for you, passing `-a` flags:
 
 .. code-block:: shell
 
    $ subhd.py -a Blade.Runner.1982.The.Final.Cut.BluRay.720p.DTS.2Audio.x264-CHD.mkv
 
-字幕也可以翻譯成簡體中文：
+translateing to Simplified Chinese is possible, too:
 
 .. code-block:: shell
 
    $ subhd.py -t zhs Blade.Runner.1982.The.Final.Cut.BluRay.720p.DTS.2Audio.x264-CHD.mkv
 
-亦可使用字串直接查詢：
+query as raw string instead of filename:
 
 .. code-block:: shell
 
    $ subhd.py -r Blade\ Runner
 
-貢獻
-====
-1. 複製這個版本庫
-2. 建立你自己的功能分支 (git checkout -b my-new-feature)
-3. 在你的分支上提交改變 (git commit -am 'Add some feature')
-4. 推回你的遠端版本褲 (git push origin my-new-feature)
-5. 在這個專案發布Pull Request
+Contributing
+============
+1. Fork it
+2. Create your feature branch (git checkout -b my-new-feature)
+3. Commit your changes (git commit -am 'Add some feature')
+4. Push to the branch (git push origin my-new-feature)
+5. Create new Pull Request
