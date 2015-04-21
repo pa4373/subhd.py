@@ -40,12 +40,12 @@ class SubHDDownloader(object):
         page_list = soup.find(class_='col-md-9').childGenerator()
         items = []
         for i in page_list:
-            if not i == '\n':
+            if not i in (u'\n', u' '):
                 item = {}
                 hrefs = i.find_all('a')
                 for j in hrefs:
                     match = self.subid_re.match(j.get('href'))
-                    if match:
+                    if match and j.get('target'):
                         item['id'] = match.group(1)
                         item['title'] = j.getText()
                     match = self.org_re.match(j.get('href'))
