@@ -108,3 +108,7 @@ Subhd.py: subhd.com 字幕下載器
 3. 在你的分支上提交改變 (git commit -am 'Add some feature')
 4. 推回你的遠端版本褲 (git push origin my-new-feature)
 5. 在這個專案發布Pull Request
+
+授權
+====
+本程式以GNU GPL v3方式授權，若專案內未包含授權內容，可至https://www.gnu.org/licenses/gpl.txt取得授權拷貝

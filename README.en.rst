@@ -1,10 +1,10 @@
-Subhd.py: Subhd.com Subtitle Downloader
+Subhd.py: subhd.com Subtitle Downloader
 =======================================
 
 The tool downloads subtitles from subhd.com automatically, and in addition it performs:
 
   - decompress the archieve and guess the most possible one.
-  - convert encoding to UTF-8 with BOM.
+  - convert encoding to UTF-8 without BOM.
   - Unix line endings conversion.
   - convert to Traditional / Simplified Chinese (optional)
 
@@ -108,3 +108,7 @@ Contributing
 3. Commit your changes (git commit -am 'Add some feature')
 4. Push to the branch (git push origin my-new-feature)
 5. Create new Pull Request
+
+License
+=======
+The program is licensed under GNU GPL v3. You can obtain a online copy: https://www.gnu.org/licenses/gpl.txt
