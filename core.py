@@ -40,7 +40,7 @@ class SubHDDownloader(object):
         page_list = soup.find(class_='col-md-9').childGenerator()
         items = []
         for i in page_list:
-            if not i in (u'\n', u' '):
+            try:
                 item = {}
                 hrefs = i.find_all('a')
                 for j in hrefs:
@@ -59,6 +59,8 @@ class SubHDDownloader(object):
 
                 if item != {}:
                     items.append(item)
+            except AttributeError: # The field might be '\n', ' ' or whatever
+                pass
         return items
 
     def download(self, subtitle_id):
