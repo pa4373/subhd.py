@@ -3,9 +3,9 @@
 '''
 import argparse
 from guessit import guess_video_info
-from core import SubHDDownloader
-from compressor import ZIPFileHandler, RARFileHandler
-from sanitizer import to_unicode, to_chs, to_cht, reset_index, set_utf8_without_bom
+from subhd_py.core import SubHDDownloader
+from subhd_py.compressor import ZIPFileHandler, RARFileHandler
+from subhd_py.sanitizer import to_unicode, to_chs, to_cht, reset_index, set_utf8_without_bom
 
 EPILOG = '''
 Copyright (C) 2015 Wei-Shao Tang (Frank Tang)
