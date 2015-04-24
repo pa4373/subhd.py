@@ -5,4 +5,4 @@ pysrt==1.0.1
 rarfile==2.7
 requests==2.6.0
 six==1.9.0
-https://codeload.github.com/pa4373/tongwen-python/zip/master
+tongwen-python==1.0.0
