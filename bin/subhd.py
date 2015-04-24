@@ -116,7 +116,9 @@ def get_subtitle(keyword, is_filename=True, auto_download=False,
     subtitle['body'] = set_utf8_without_bom(subtitle['body']) # Plain string
     subtitle['body'] = subtitle['body'].replace('\r\n', '\n') # Unix-style line endings
 
-    if not out_file and is_filename:
+    if not out_file:
+        if not is_filename:
+            filename = subtitle['name']
         out_file = filename.replace(filename.split('.')[-1],
                                     'zh.%s' % subtitle['extension'])
 
