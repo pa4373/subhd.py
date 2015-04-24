@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
-'''
-This module defines SubHDDownloader class, the core communication part with
-subhd.com
+'''This module defines SubHDDownloader class, the core communication
+ part with subhd.com.
 '''
 import re
 import requests
@@ -13,8 +12,6 @@ class SubHDDownloader(object):
     '''The class seeks and downloads subtitles from subhd.com
     '''
     def __init__(self):
-        '''Initialse the instance.
-        '''
         self.dl_lookup_url = 'http://subhd.com/ajax/down_ajax'
         self.search_url = 'http://subhd.com/search/'
         self.subid_re = re.compile(r'^/a/(\d+)$')
