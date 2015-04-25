@@ -6,12 +6,12 @@ except ImportError:
 
 setup(
     name = 'subhd.py',
-    version = '0.1.3',
+    version = '0.1.4',
     description = 'subhd.com subtitle downloader',
     author = 'Wei-Shao Tang (Frank Tang)',
     author_email = 'pa4373@gmail.com',
     url = 'https://github.com/pa4373/subhd.py',
-    download_url = 'https://github.com/pa4373/subhd.py/tarball/0.1.3',
+    download_url = 'https://github.com/pa4373/subhd.py/tarball/0.1.4',
     license = 'GPLv3',
     scripts = ['bin/subhd.py'],
     packages = ['subhd_py', 'pyTongwen'],
